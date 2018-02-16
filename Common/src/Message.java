@@ -2,28 +2,34 @@ import java.io.Serializable;
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
 
-public class Message implements Serializable {
-    protected long timestamp;
-    protected String message;
-    protected String id;
+class Message implements Serializable {
+    private long timestamp;
+    private String message;
+    private String id;
+    private long PID;
 
-    public Message(String id, long time, String msg) {
+    Message(String id, long time, String msg) {
         this.id = id;
         this.timestamp = time;
-        this.message = msg+" -- PID: "+getPID();
+        this.message = msg;
+        this.PID = getPID();
     }
 
-    private long getPID(){
-
+    private long getPID() {
         RuntimeMXBean bean = ManagementFactory.getRuntimeMXBean();
-        String jvmName = bean.getName();
-
-        long pid = Long.valueOf(jvmName.split("@")[0]);
-        return pid;
+        return Long.valueOf(bean.getName().split("@")[0]);
     }
 
     @Override
     public String toString() {
         return "[" + this.timestamp + "] [" + this.id + "] [" + this.message + "]";
+    }
+
+    public long getTimestamp() {
+        return this.timestamp;
+    }
+
+    public String getId() {
+        return this.id;
     }
 }
