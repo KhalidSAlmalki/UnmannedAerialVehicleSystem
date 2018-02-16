@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Common/Common.iml" filepath="$PROJECT_DIR$/Common/Common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GPSSystem/GPSSystem.iml" filepath="$PROJECT_DIR$/GPSSystem/GPSSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/HealthMonitor/HealthMonitor.iml" filepath="$PROJECT_DIR$/HealthMonitor/HealthMonitor.iml" />
       <module fileurl="file://$PROJECT_DIR$/TemperatureSVM/TemperatureSVM.iml" filepath="$PROJECT_DIR$/TemperatureSVM/TemperatureSVM.iml" />
       <module fileurl="file://$PROJECT_DIR$/UnmannedAerialVehicleSystem.iml" filepath="$PROJECT_DIR$/UnmannedAerialVehicleSystem.iml" />

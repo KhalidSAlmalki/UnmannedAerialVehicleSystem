@@ -12,7 +12,7 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Heart
         try {
             HealthMonitorDashboard obj = new HealthMonitorDashboard();
             LocateRegistry.createRegistry(2020);
-            Naming.bind("//localhost:2020/temperature", obj);
+            Naming.bind("//localhost:2020/svm", obj);
             System.err.println("HealthMonitorDashboard ready");
         } catch (Exception e) {
             System.err.println("HealthMonitorDashboard exception: " + e.toString());
