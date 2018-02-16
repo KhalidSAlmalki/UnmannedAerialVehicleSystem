@@ -3,12 +3,28 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 
+
 public class HealthMonitorDashboard extends UnicastRemoteObject implements Heartbeat {
+
+
+
     public HealthMonitorDashboard() throws RemoteException {
         super();
     }
 
+
+
+    private void detectFailedSystem(){
+
+    }
+
     public static void main(String args[]) {
+
+        // thread check after 10 second
+
+
+        //
+
         try {
             HealthMonitorDashboard obj = new HealthMonitorDashboard();
             LocateRegistry.createRegistry(2020);
