@@ -12,23 +12,25 @@ import java.util.Random;
  * Created by Palash on 2/16/2018.
  */
 public class GPSFacade {
-    private Body body;
     private JFrame frame;
 
-    private GPSFacade() throws RemoteException, NotBoundException {
-        Registry registry = LocateRegistry.getRegistry(2020);
-        this.body = (Body) registry.lookup("svm");
+    private GPSFacade() throws Exception {
     }
 
-    public static void main(String[] args) throws RemoteException, NotBoundException {
-        GPSFacade gps = new GPSFacade();
+    public static void main(String[] args) throws Exception {
+        HeartbeatTactics heartbeatTactics = new HeartbeatTactics("svm");
+        Thread heartbeatThread = null;
+
+        GPSFacade thermometer = null;
         try {
-            gps.startUI();
-            gps.keepBeating();
+            heartbeatThread = heartbeatTactics.runHeartbeatTactics("GPS", "Alive");
+
+            thermometer = new GPSFacade();
+            thermometer.startUI();
         } catch (Exception e) {
-            System.out.println("Stopping GPS System due to unexpected exception.");
-        } finally {
-            gps.stopUI();
+            heartbeatThread.interrupt();
+            thermometer.stopUI();
+            throw e;
         }
     }
 
@@ -40,9 +42,9 @@ public class GPSFacade {
         frame = new JFrame();
         frame.setSize(1050, 200);
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.LINE_AXIS));
-        frame.setTitle("NAVIGATION SYSTEM");
+        frame.setTitle("GPS");
 
-        JLabel label = new JLabel("Navigation System: I am taking you places!");
+        JLabel label = new JLabel("I will take you places!");
         label.setFont(new Font("Serif", Font.PLAIN, 48));
         label.setForeground(Color.BLUE);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -50,21 +52,13 @@ public class GPSFacade {
 
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    }
 
-    private void keepBeating() throws Exception {
+        Random random = new Random();
         while (true) {
-            Random random = new Random();
-            int x = random.nextInt(10);
-            System.out.println("x: " + 100 / x);
-
+            int x = random.nextInt(100);
             Thread.sleep(1000);
-            beat();
+            label.setText("Latitude/Longitude: " + (float) 100 / x);
         }
-    }
-
-    private void beat() throws RemoteException {
-        this.body.beat(new Message("GPS System", new Date().getTime(), "GPS System is working!"));
     }
 
 }

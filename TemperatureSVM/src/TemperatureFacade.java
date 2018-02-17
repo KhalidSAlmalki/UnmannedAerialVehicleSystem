@@ -12,23 +12,25 @@ import java.util.Random;
  * Created by Palash on 2/16/2018.
  */
 public class TemperatureFacade {
-    private Body body;
     private JFrame frame;
 
-    private TemperatureFacade() throws RemoteException, NotBoundException {
-        Registry registry = LocateRegistry.getRegistry(2020);
-        this.body = (Body) registry.lookup("svm");
+    private TemperatureFacade() throws Exception {
     }
 
-    public static void main(String[] args) throws RemoteException, NotBoundException {
-        TemperatureFacade thermometer = new TemperatureFacade();
+    public static void main(String[] args) throws Exception {
+        HeartbeatTactics heartbeatTactics = new HeartbeatTactics("svm");
+        Thread heartbeatThread = null;
+
+        TemperatureFacade thermometer = null;
         try {
+            heartbeatThread = heartbeatTactics.runHeartbeatTactics("Temperature", "Alive");
+
+            thermometer = new TemperatureFacade();
             thermometer.startUI();
-            thermometer.keepBeating();
         } catch (Exception e) {
-            System.out.println("Stopping Thermometer due to unexpected exception.");
-        } finally {
+            heartbeatThread.interrupt();
             thermometer.stopUI();
+            throw e;
         }
     }
 
@@ -42,29 +44,21 @@ public class TemperatureFacade {
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.LINE_AXIS));
         frame.setTitle("THERMOMETER");
 
-        JLabel label = new JLabel("THERMOMETER: Sometimes I am hot, sometimes cool!");
+        JLabel label = new JLabel("Sometimes I am hot, sometimes cool!");
         label.setFont(new Font("Serif", Font.PLAIN, 48));
-        label.setForeground(Color.BLUE);
+        label.setForeground(Color.RED);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         frame.getContentPane().add(label);
 
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    }
 
-    private void keepBeating() throws Exception {
+        Random random = new Random();
         while (true) {
-            Random random = new Random();
-            int x = random.nextInt(10);
-            System.out.println("x: " + 100 / x);
-
+            int x = random.nextInt(100);
             Thread.sleep(1000);
-            beat();
+            label.setText("Temperature: " + (float) 100 / x);
         }
-    }
-
-    private void beat() throws RemoteException {
-        this.body.beat(new Message("Thermometer", new Date().getTime(), "Temperature System is working!"));
     }
 
 }
