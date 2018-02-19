@@ -10,21 +10,18 @@ import java.nio.file.Paths;
 public class UAVS {
 
     static String Workplacepath;
+
     public static void main(String[] args) throws IOException, InterruptedException {
 
         Workplacepath = Paths.get(".").toAbsolutePath().normalize().toString();
-        setUpGUI();
-
-        Runtime.getRuntime().exec("java -jar "+Workplacepath+"/out/artifacts/HealthMonitor_jar/HealthMonitor.jar");
-        Thread.sleep(1000);
-        Runtime.getRuntime().exec("java -jar  "+Workplacepath+"/out/artifacts/CameraSystem_jar/CameraSystem.jar");
-        Runtime.getRuntime().exec("java -jar "+Workplacepath+"/out/artifacts/GPSSystem_jar/GPSSystem.jar");
-        Runtime.getRuntime().exec("java -jar "+Workplacepath+"/out/artifacts/TemperatureSVM_jar/TemperatureSVM.jar");
-
-
+//        setUpGUI();
+        Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/HealthMonitor_jar/HealthMonitor.jar");
+        Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/CameraSystem_jar/CameraSystem.jar");
+        Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/GPSSystem_jar/GPSSystem.jar");
+        Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/TemperatureSVM_jar/TemperatureSVM.jar");
     }
 
-    static void setUpGUI(){
+    static void setUpGUI() {
 
         JFrame guiFrame = new JFrame();
 
@@ -37,7 +34,7 @@ public class UAVS {
         guiFrame.setLocationRelativeTo(null);
 
         JButton Health = new JButton();
-        Health.setSize(100,100);
+        Health.setSize(100, 100);
         Health.setText("Health Monitor");
         guiFrame.add(Health);
 
@@ -46,7 +43,7 @@ public class UAVS {
             public void actionPerformed(ActionEvent e) {
                 Process proc = null;
                 try {
-                    proc = Runtime.getRuntime().exec("java -jar "+Workplacepath+"/out/artifacts/HealthMonitor_jar/HealthMonitor.jar");
+                    proc = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/HealthMonitor_jar/HealthMonitor.jar");
 
                     System.out.println(proc);
                 } catch (IOException e1) {
@@ -59,7 +56,7 @@ public class UAVS {
 
         // button  camera
         JButton camera = new JButton();
-        camera.setSize(100,100);
+        camera.setSize(100, 100);
         camera.setText("camera");
 
         camera.addActionListener(new ActionListener() {
@@ -67,7 +64,7 @@ public class UAVS {
             public void actionPerformed(ActionEvent e) {
                 Process proc = null;
                 try {
-                    proc = Runtime.getRuntime().exec("java -jar  "+Workplacepath+"/out/artifacts/CameraSystem_jar/CameraSystem.jar");
+                    proc = Runtime.getRuntime().exec("java -jar  " + Workplacepath + "/out/artifacts/CameraSystem_jar/CameraSystem.jar");
                     System.out.println(proc);
 
                 } catch (IOException e1) {
@@ -83,7 +80,7 @@ public class UAVS {
 
         // Gps  camera
         JButton Gps = new JButton();
-        Gps.setSize(100,100);
+        Gps.setSize(100, 100);
         Gps.setText("GPS");
         guiFrame.add(Gps);
 
@@ -92,7 +89,7 @@ public class UAVS {
             public void actionPerformed(ActionEvent e) {
                 Process proc = null;
                 try {
-                    proc = Runtime.getRuntime().exec("java -jar "+Workplacepath+"/out/artifacts/GPSSystem_jar/GPSSystem.jar");
+                    proc = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/GPSSystem_jar/GPSSystem.jar");
                     System.out.println(proc);
 
                 } catch (IOException e1) {
@@ -104,10 +101,8 @@ public class UAVS {
         });
 
 
-
-
         JButton temp = new JButton();
-        temp.setSize(100,100);
+        temp.setSize(100, 100);
         temp.setText("temp");
         guiFrame.add(temp);
 
@@ -116,7 +111,7 @@ public class UAVS {
             public void actionPerformed(ActionEvent e) {
                 Process proc = null;
                 try {
-                    proc = Runtime.getRuntime().exec("java -jar "+Workplacepath+"/out/artifacts/TemperatureSVM_jar/TemperatureSVM.jar");
+                    proc = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/TemperatureSVM_jar/TemperatureSVM.jar");
                     System.out.println(proc);
 
                 } catch (IOException e1) {

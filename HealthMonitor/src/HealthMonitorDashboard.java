@@ -16,14 +16,8 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
 
     public HealthMonitorDashboard() throws RemoteException {
         super();
-
-
         guiHealthMonitor = new GUIHealthMonitor();
-
-
-        new Thread(() -> runCheekingFailedSystem()).start();
-
-
+        new Thread(() -> runCheckingFailedSystem()).start();
     }
 
     public static long getDateDiff(long timeUpdate) {
@@ -45,34 +39,27 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
             e.printStackTrace();
         }
 
-        while (true) {
-
-        }
+//        while (true) {
+//        }
     }
 
-    private void runCheekingFailedSystem() {
-
-        //check the time on sprite method
-
+    private void runCheckingFailedSystem() {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-
                 detectFailedSystem();
             }
         };
         Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0, 5000);
+        timer.scheduleAtFixedRate(timerTask, 0, 2000);
     }
 
-    private synchronized void  detectFailedSystem() {
+    private synchronized void detectFailedSystem() {
         for (String name : beatsMap.keySet()) {
             Message beat = beatsMap.get(name);
-
             if (getDateDiff(beat.getTimestamp()) > 3) {
-
-                //  System.out.println(beat.getId() +" is crashed !!"+ " process id"+beat.getPID());
-                guiHealthMonitor.addValueToTeaxArea(beat.getId() + " is crashed !!" + " process id" + beat.getPID());
+                guiHealthMonitor.addClosedApplication(beat.getId() + " has crashed !!" + " [PID: " + beat.getPID() + "]");
+                beatsMap.remove(name);
             }
         }
     }
@@ -81,7 +68,7 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
     public void beat(Message message) throws RemoteException {
         beatsMap.put(message.getId(), message);
         System.out.println(message.toString());
-        guiHealthMonitor.addValueToTeaxArea(message.toString());
+        guiHealthMonitor.addRunningApplication(message.toString());
 
     }
 }

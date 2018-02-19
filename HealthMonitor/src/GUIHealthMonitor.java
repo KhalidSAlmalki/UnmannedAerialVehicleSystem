@@ -2,55 +2,59 @@
 //could just import javax.swing.* and java.awt.* etc..
 
 import javax.swing.*;
+import java.awt.*;
 
 public class GUIHealthMonitor {
 
-    JTextArea textArea;
-    JScrollPane scroll;
+    JTextArea runningPane, closedPane;
+
     public GUIHealthMonitor() {
         JFrame guiFrame = new JFrame();
 
-        //make sure the program exits when the frame closes
         guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guiFrame.setTitle("Health Monitor  GUI");
         guiFrame.setSize(400, 400);
 
-        //This will center the JFrame in the middle of the screen
+        runningPane = new JTextArea();
+        runningPane.setBounds(guiFrame.getBounds());
+        guiFrame.add(runningPane);
+
+        closedPane = new JTextArea();
+        closedPane.setBounds(guiFrame.getBounds());
+        guiFrame.add(closedPane);
+
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+                runningPane, closedPane);
+        splitPane.setOneTouchExpandable(true);
+        splitPane.setDividerLocation(150);
+
+//        textArea = new JTextArea();
+//        textArea.setBounds(guiFrame.getBounds());
+//        guiFrame.add(textArea);
+//
+//        textArea.setEditable(false);
+//        scroll = new JScrollPane(textArea);
+//        scroll.setBounds(guiFrame.getBounds());
+//        guiFrame.getContentPane().add(scroll);
+
+        guiFrame.add(splitPane);
+
         guiFrame.setLocationRelativeTo(null);
-
-
-        // add teatarea
-
-        textArea = new JTextArea();
-        textArea.setBounds(guiFrame.getBounds());
-        guiFrame.add(textArea);
-
-        textArea.setEditable(false);
-         scroll = new JScrollPane(textArea);
-        scroll.setBounds(guiFrame.getBounds());
-
-        guiFrame.getContentPane().add(scroll);
-        guiFrame. setLocationRelativeTo ( null );
-
-
-
-
-
-        //make sure the JFrame is visible
         guiFrame.setVisible(true);
-
-
     }
 
-    public void addValueToTeaxArea(String text) {
+//    public void addValueToTextArea(String text) {
+//        textArea.append("\n");
+//        textArea.append(text);
+//    }
 
-        textArea.append("\n");
-        textArea.append(text);
-
-
-
-
+    public void addRunningApplication(String text){
+        runningPane.append("\n");
+        runningPane.append(text);
     }
 
-
+    public void addClosedApplication(String text){
+        closedPane.append("\n");
+        closedPane.append(text);
+    }
 }
