@@ -62,7 +62,7 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
             }
         };
         Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0, 100);
+        timer.scheduleAtFixedRate(timerTask, 0, 5000);
     }
 
     private synchronized void  detectFailedSystem() {
@@ -73,7 +73,6 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
 
                 //  System.out.println(beat.getId() +" is crashed !!"+ " process id"+beat.getPID());
                 guiHealthMonitor.addValueToTeaxArea(beat.getId() + " is crashed !!" + " process id" + beat.getPID());
-                beatsMap.remove(name, beatsMap.get(name));
             }
         }
     }

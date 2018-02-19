@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.TimerTask;
 
 /**
  * Created by Palash on 2/16/2018.
@@ -15,17 +16,18 @@ public class CameraFacade {
 
     public static void main(String[] args) throws Exception {
         HeartbeatTactics heartbeatTactics = new HeartbeatTactics("svm");
-        Thread heartbeatThread = null;
+        TimerTask heartbeatThread = null;
 
-        CameraFacade thermometer = null;
+        CameraFacade camera = null;
+        heartbeatThread = heartbeatTactics.runHeartbeatTactics("Camera", "Alive");
+
         try {
-            heartbeatThread = heartbeatTactics.runHeartbeatTactics("Camera", "Alive");
-
-            thermometer = new CameraFacade();
-            thermometer.startUI();
+            camera = new CameraFacade();
+            camera.startUI();
         } catch (Exception e) {
-            heartbeatThread.interrupt();
-            thermometer.stopUI();
+            e.printStackTrace();
+            heartbeatThread.cancel();
+            camera.stopUI();
             throw e;
         }
     }
@@ -36,39 +38,28 @@ public class CameraFacade {
 
     private void startUI() throws Exception {
         frame = new JFrame();
-        frame.setSize(500, 200);
+        frame.setSize(400, 200);
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.LINE_AXIS));
-        frame.setTitle("GPS");
+        frame.setTitle("Camera ");
 
-        JLabel label = new JLabel(" cameras are warming up .....");
+        JLabel label = new JLabel("Camera STARTED WORKING!");
         label.setFont(new Font("Serif", Font.PLAIN, 48));
-        label.setForeground(Color.BLUE);
+        label.setForeground(Color.RED);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         frame.getContentPane().add(label);
 
         frame.setVisible(true);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
+            frame.pack();
         Random random = new Random();
-        int x = random.nextInt(100);
-
-        ArrayList<String> dataStreaming = new ArrayList<String>(x);
-
-
-
-
-        for (int i = 0; i < x; i++) {
-            dataStreaming.add(" camera num " + i);
-
-        }
-
         while (true) {
-            int index = random.nextInt(100);
 
-           String curentStv =  dataStreaming.get(50);
+            int x = random.nextInt(10);
+            label.setText("Camera: " +  100 / x);
 
-            label.setText("observing: " + curentStv);
+            Thread.sleep(1000);
         }
     }
+
 
 }
