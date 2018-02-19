@@ -5,11 +5,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 public class UAVS {
 
+    static String Workplacepath;
     public static void main(String[] args) {
 
+        Workplacepath = Paths.get(".").toAbsolutePath().normalize().toString();
         setUpGUI();
     }
 
@@ -36,6 +39,8 @@ public class UAVS {
                 Process proc = null;
                 try {
                     proc = Runtime.getRuntime().exec("java -jar /Users/khalidalmalki/Documents/GitHub/UnmannedAerialVehicleSystem/out/artifacts/HealthMonitor_jar/HealthMonitor.jar");
+
+                    System.out.println(proc);
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -54,7 +59,9 @@ public class UAVS {
             public void actionPerformed(ActionEvent e) {
                 Process proc = null;
                 try {
-                    proc = Runtime.getRuntime().exec("java -jar  /Users/khalidalmalki/Documents/GitHub/UnmannedAerialVehicleSystem/out/artifacts/CameraSystem_jar/CameraSystem.jar");
+                    proc = Runtime.getRuntime().exec("java -jar  "+Workplacepath+"/out/artifacts/CameraSystem_jar/CameraSystem.jar");
+                    System.out.println(proc);
+
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -77,7 +84,9 @@ public class UAVS {
             public void actionPerformed(ActionEvent e) {
                 Process proc = null;
                 try {
-                    proc = Runtime.getRuntime().exec("java -jar /Users/khalidalmalki/Documents/GitHub/UnmannedAerialVehicleSystem/out/artifacts/GPSSystem_jar/GPSSystem.jar");
+                    proc = Runtime.getRuntime().exec("java -jar "+Workplacepath+"/out/artifacts/GPSSystem_jar/GPSSystem.jar");
+                    System.out.println(proc);
+
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -99,7 +108,9 @@ public class UAVS {
             public void actionPerformed(ActionEvent e) {
                 Process proc = null;
                 try {
-                    proc = Runtime.getRuntime().exec("java -jar /Users/khalidalmalki/Documents/GitHub/UnmannedAerialVehicleSystem/out/artifacts/TemperatureSVM_jar/TemperatureSVM.jar");
+                    proc = Runtime.getRuntime().exec("java -jar "+Workplacepath+"out/artifacts/TemperatureSVM_jar/TemperatureSVM.jar");
+                    System.out.println(proc);
+
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
@@ -111,6 +122,7 @@ public class UAVS {
 
         //
 
+        System.out.println(Paths.get(".").toAbsolutePath().normalize().toString());
         //make sure the JFrame is visible
         guiFrame.setLayout(new FlowLayout());
 

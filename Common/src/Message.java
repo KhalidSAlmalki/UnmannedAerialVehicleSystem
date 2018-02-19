@@ -24,7 +24,7 @@ class Message implements Serializable {
 
     @Override
     public String toString() {
-        return "[" + this.timestamp + "] [" + this.id + "] [" + this.message + "]";
+        return "[" + this.timestamp + "] [" + this.id + "] [" + this.message + "]"+"[PID]"+"["+getPID()+"]";
     }
 
     public long getTimestamp() {
