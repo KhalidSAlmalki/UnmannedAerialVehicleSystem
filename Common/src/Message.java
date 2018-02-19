@@ -8,6 +8,10 @@ class Message implements Serializable {
     private String id;
 
 
+
+    private Boolean isRead ;
+
+
     private long PID;
 
     Message(String id, long time, String msg) {
@@ -15,6 +19,7 @@ class Message implements Serializable {
         this.timestamp = time;
         this.message = msg;
         this.PID = getPIDs();
+        this.isRead = false;
     }
 
     private long getPIDs() {
@@ -43,4 +48,11 @@ class Message implements Serializable {
         return message;
     }
 
+    public Boolean getRead() {
+        return isRead;
+    }
+
+    public void setRead(Boolean read) {
+        isRead = read;
+    }
 }

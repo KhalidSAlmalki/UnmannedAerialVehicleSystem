@@ -14,7 +14,7 @@ public class UAVS {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         Workplacepath = Paths.get(".").toAbsolutePath().normalize().toString();
-//        setUpGUI();
+       setUpGUI();
         Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/HealthMonitor_jar/HealthMonitor.jar");
         Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/CameraSystem_jar/CameraSystem.jar");
         Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/GPSSystem_jar/GPSSystem.jar");

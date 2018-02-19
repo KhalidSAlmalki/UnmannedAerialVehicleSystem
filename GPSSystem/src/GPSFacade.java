@@ -55,7 +55,7 @@ public class GPSFacade {
         Random random = new Random();
         while (true) {
 
-            int x = random.nextInt(10);
+            int x = random.nextInt(30);
             label.setText("GPS: " +  100 / x);
 
             Thread.sleep(1000);

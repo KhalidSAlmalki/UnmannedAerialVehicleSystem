@@ -57,9 +57,12 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
     private synchronized void detectFailedSystem() {
         for (String name : beatsMap.keySet()) {
             Message beat = beatsMap.get(name);
-            if (getDateDiff(beat.getTimestamp()) > 3) {
+            if (getDateDiff(beat.getTimestamp()) > 3 && !beat.getRead()) {
                 guiHealthMonitor.addClosedApplication(beat.getId() + " has crashed !!" + " [PID: " + beat.getPID() + "]");
-                beatsMap.remove(name);
+                beat.setRead(true);
+                beatsMap.put(beat.getId(), beat);
+            }else {
+                System.out.println(beatsMap.size());
             }
         }
     }
