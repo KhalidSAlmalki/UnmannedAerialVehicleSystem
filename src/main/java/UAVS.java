@@ -15,10 +15,24 @@ public class UAVS {
 
         Workplacepath = Paths.get(".").toAbsolutePath().normalize().toString();
        setUpGUI();
-        Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/HealthMonitor_jar/HealthMonitor.jar");
-        Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/CameraSystem_jar/CameraSystem.jar");
-        Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/GPSSystem_jar/GPSSystem.jar");
-        Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/TemperatureSVM_jar/TemperatureSVM.jar");
+
+        Process p =  Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/HealthMonitor_jar/HealthMonitor.jar");
+
+        Thread.sleep(1000);
+        Process p1 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/CameraSystem_jar/CameraSystem.jar");
+        Thread.sleep(1000);
+
+
+        Process p2 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/GPSSystem_jar/GPSSystem.jar");
+        Thread.sleep(1000);
+
+
+        Process p3 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/TemperatureSVM_jar/TemperatureSVM.jar");
+
+
+
+
+
     }
 
     static void setUpGUI() {
