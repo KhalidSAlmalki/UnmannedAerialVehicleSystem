@@ -69,7 +69,7 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
         for (String name : beatsMap.keySet()) {
             Message beat = beatsMap.get(name);
 
-            if (getDateDiff(beat.getTimestamp()) > 5) {
+            if (getDateDiff(beat.getTimestamp()) > 3) {
 
                 //  System.out.println(beat.getId() +" is crashed !!"+ " process id"+beat.getPID());
                 guiHealthMonitor.addValueToTeaxArea(beat.getId() + " is crashed !!" + " process id" + beat.getPID());

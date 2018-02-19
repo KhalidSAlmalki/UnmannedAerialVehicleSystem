@@ -3,6 +3,8 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Palash on 2/17/2018.
@@ -20,18 +22,26 @@ class HeartbeatTactics {
         this.body.beat(new Message(id, new Date().getTime(), msg));
     }
 
-    Thread runHeartbeatTactics(String id, String msg) throws Exception {
-        Thread thread = new Thread(() -> {
+    TimerTask runHeartbeatTactics(String id, String msg)  {
 
-            try {
-                beat(id, msg);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
+            TimerTask timerTask = new TimerTask() {
+                @Override
+                public void run() {
 
-        });
-        thread.start();
+                    try {
+                        beat(id, msg);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
 
-        return thread;
+                }
+            };
+
+            java.util.Timer timer = new Timer(true);
+            timer.scheduleAtFixedRate(timerTask, 0, 3000);
+
+
+
+        return timerTask;
     }
 }

@@ -10,35 +10,42 @@ import java.util.TimerTask;
  */
 public class GPSFacade {
     private JFrame frame;
-    static HeartbeatTactics heartbeatTactics;
+
     private GPSFacade() throws Exception {
     }
 
     public static void main(String[] args) throws Exception {
-         heartbeatTactics = new HeartbeatTactics("svm");
+        HeartbeatTactics heartbeatTactics = new HeartbeatTactics("svm");
+        TimerTask heartbeatThread = null;
 
         GPSFacade thermometer = null;
+        heartbeatThread = heartbeatTactics.runHeartbeatTactics("GPS", "Alive");
 
+        try {
 
-        thermometer = new GPSFacade();
-        thermometer.startUI();
-
-
+            thermometer = new GPSFacade();
+            thermometer.startUI();
+        } catch (Exception e) {
+            e.printStackTrace();
+            heartbeatThread.cancel();
+            thermometer.stopUI();
+            throw e;
+        }
     }
 
     private void stopUI() {
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
 
-    private void startUI() throws Exception  {
+    private void startUI() throws Exception {
         frame = new JFrame();
         frame.setSize(1050, 200);
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.LINE_AXIS));
         frame.setTitle("GPS");
 
-        JLabel label = new JLabel("I will take you places!");
+        JLabel label = new JLabel("GPS STARTED WORKING!");
         label.setFont(new Font("Serif", Font.PLAIN, 48));
-        label.setForeground(Color.BLUE);
+        label.setForeground(Color.RED);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         frame.getContentPane().add(label);
 
@@ -46,26 +53,13 @@ public class GPSFacade {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         Random random = new Random();
+        while (true) {
 
-        TimerTask timerTask = new TimerTask() {
-            @Override
-            public void run() {
-                label.setText("method called ");
+            int x = random.nextInt(10);
+            label.setText("GPS: " +  100 / x);
 
-                int x = random.nextInt(100);
-                label.setText("Latitude/Longitude: " + (float) 100 / x);
-
-                try {
-                    heartbeatTactics.runHeartbeatTactics("GPS", "Alive");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-        };
-        java.util.Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(timerTask, 0, 5000);
-
+            Thread.sleep(1000);
+        }
     }
 
 }
