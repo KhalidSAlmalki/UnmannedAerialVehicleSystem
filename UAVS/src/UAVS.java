@@ -1,5 +1,3 @@
-import javafx.scene.Camera;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,27 +10,19 @@ public class UAVS {
     static String Workplacepath;
 
     public static void main(String[] args) throws IOException, InterruptedException {
-
         Workplacepath = Paths.get(".").toAbsolutePath().normalize().toString();
-       setUpGUI();
+        setUpGUI();
 
-        Process p =  Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/HealthMonitor_jar/HealthMonitor.jar");
-
-        Thread.sleep(1000);
-        Process p1 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/CameraSystem_jar/CameraSystem.jar");
+        Process p = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/HealthMonitor.jar");
         Thread.sleep(1000);
 
-
-        Process p2 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/GPSSystem_jar/GPSSystem.jar");
+        Process p1 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/CameraSystem.jar");
         Thread.sleep(1000);
 
+        Process p2 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/GPSSystem.jar");
+        Thread.sleep(1000);
 
-        Process p3 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/TemperatureSVM_jar/TemperatureSVM.jar");
-
-
-
-
-
+        Process p3 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/TemperatureSVM.jar");
     }
 
     static void setUpGUI() {
@@ -57,14 +47,10 @@ public class UAVS {
             public void actionPerformed(ActionEvent e) {
                 Process proc = null;
                 try {
-                    proc = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/HealthMonitor_jar/HealthMonitor.jar");
-
-                    System.out.println(proc);
+                    proc = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/HealthMonitor.jar");
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-
-                System.out.println("Health");
             }
         });
 
@@ -78,15 +64,10 @@ public class UAVS {
             public void actionPerformed(ActionEvent e) {
                 Process proc = null;
                 try {
-                    proc = Runtime.getRuntime().exec("java -jar  " + Workplacepath + "/out/artifacts/CameraSystem_jar/CameraSystem.jar");
-                    System.out.println(proc);
-
+                    proc = Runtime.getRuntime().exec("java -jar  " + Workplacepath + "/CameraSystem.jar");
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-
-                System.out.println("camera");
-
             }
         });
 
@@ -103,14 +84,10 @@ public class UAVS {
             public void actionPerformed(ActionEvent e) {
                 Process proc = null;
                 try {
-                    proc = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/GPSSystem_jar/GPSSystem.jar");
-                    System.out.println(proc);
-
+                    proc = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/GPSSystem.jar");
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-
-                System.out.println("Gps on in proceess id ");
             }
         });
 
@@ -125,24 +102,14 @@ public class UAVS {
             public void actionPerformed(ActionEvent e) {
                 Process proc = null;
                 try {
-                    proc = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/out/artifacts/TemperatureSVM_jar/TemperatureSVM.jar");
-                    System.out.println(proc);
-
+                    proc = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/TemperatureSVM.jar");
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
-
-                System.out.println("temp on in proceess id ");
             }
         });
 
-
-        //
-
-        System.out.println(Paths.get(".").toAbsolutePath().normalize().toString());
-        //make sure the JFrame is visible
         guiFrame.setLayout(new FlowLayout());
-
         guiFrame.setVisible(true);
     }
 }

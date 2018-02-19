@@ -61,8 +61,6 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
                 guiHealthMonitor.addClosedApplication(beat.getId() + " has crashed !!" + " [PID: " + beat.getPID() + "]");
                 beat.setRead(true);
                 beatsMap.put(beat.getId(), beat);
-            }else {
-                System.out.println(beatsMap.size());
             }
         }
     }
@@ -70,7 +68,6 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
     @Override
     public void beat(Message message) throws RemoteException {
         beatsMap.put(message.getId(), message);
-        System.out.println(message.toString());
         guiHealthMonitor.addRunningApplication(message.toString());
 
     }
