@@ -6,16 +6,18 @@ class Message implements Serializable {
     private long timestamp;
     private String message;
     private String id;
+
+
     private long PID;
 
     Message(String id, long time, String msg) {
         this.id = id;
         this.timestamp = time;
         this.message = msg;
-        this.PID = getPID();
+        this.PID = getPIDs();
     }
 
-    private long getPID() {
+    private long getPIDs() {
         RuntimeMXBean bean = ManagementFactory.getRuntimeMXBean();
         return Long.valueOf(bean.getName().split("@")[0]);
     }
@@ -32,4 +34,13 @@ class Message implements Serializable {
     public String getId() {
         return this.id;
     }
+
+    public long getPID() {
+        return PID;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
 }

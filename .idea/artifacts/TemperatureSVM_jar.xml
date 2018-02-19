@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TemperatureSVM:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TemperatureSVM_jar</output-path>
+    <root id="archive" name="TemperatureSVM.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/resource/3/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="TemperatureSVM" />
+      <element id="module-output" name="Common" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GPSSystem:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GPSSystem_jar</output-path>
+    <root id="archive" name="GPSSystem.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/resource/2/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="GPSSystem" />
+      <element id="module-output" name="Common" />
+    </root>
+  </artifact>
+</component>

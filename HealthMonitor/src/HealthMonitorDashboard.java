@@ -4,39 +4,31 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class HealthMonitorDashboard extends UnicastRemoteObject implements Body {
 
     Map<String, Message> beatsMap = new HashMap<String, Message>();
 
-    public static long getDateDiff(long timeUpdate) {
-        long diffInMillies = Math.abs(System.currentTimeMillis() - timeUpdate);
-        return TimeUnit.SECONDS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-    }
+    GUIHealthMonitor guiHealthMonitor;
 
     public HealthMonitorDashboard() throws RemoteException {
         super();
-//        new java.util.Timer().schedule(
-//                new java.util.TimerTask() {
-//                    @Override
-//                    public void run() {
-//                        detectFailedSystem();
-//                    }
-//                },
-//                5000
-//        );
+
+
+        guiHealthMonitor = new GUIHealthMonitor();
+
+
+        new Thread(() -> runCheekingFailedSystem()).start();
+
+
     }
 
-    private synchronized void detectFailedSystem() {
-        for (String name : beatsMap.keySet()) {
-            String key = name.toString();
-            Message beat = beatsMap.get(name);
-            System.out.println(getDateDiff(beat.getTimestamp()));
-            if (getDateDiff(beat.getTimestamp()) > 10) {
-                System.out.println("Down" + beat.toString());
-            }
-        }
+    public static long getDateDiff(long timeUpdate) {
+        long diffInMillies = Math.abs(System.currentTimeMillis() - timeUpdate);
+        return TimeUnit.SECONDS.convert(diffInMillies, TimeUnit.MILLISECONDS);
     }
 
     public static void main(String args[]) {
@@ -45,10 +37,44 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
             HealthMonitorDashboard obj = new HealthMonitorDashboard();
             LocateRegistry.createRegistry(2020);
             Naming.bind("//localhost:2020/svm", obj);
+
             System.err.println("Health Monitor started running.");
+
         } catch (Exception e) {
             System.err.println("Health Monitor Dashboard exception: " + e.toString());
             e.printStackTrace();
+        }
+
+        while (true) {
+
+        }
+    }
+
+    private void runCheekingFailedSystem() {
+
+        //check the time on sprite method
+
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+
+                detectFailedSystem();
+            }
+        };
+        Timer timer = new Timer(true);
+        timer.scheduleAtFixedRate(timerTask, 0, 100);
+    }
+
+    private void detectFailedSystem() {
+        for (String name : beatsMap.keySet()) {
+            Message beat = beatsMap.get(name);
+
+            if (getDateDiff(beat.getTimestamp()) > 10) {
+
+                //  System.out.println(beat.getId() +" is crashed !!"+ " process id"+beat.getPID());
+                guiHealthMonitor.addValueToTeaxArea(beat.getId() + " is crashed !!" + " process id" + beat.getPID());
+                beatsMap.remove(name, beatsMap.get(name));
+            }
         }
     }
 
@@ -56,5 +82,7 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
     public void beat(Message message) throws RemoteException {
         beatsMap.put(message.getId(), message);
         System.out.println(message.toString());
+        guiHealthMonitor.addValueToTeaxArea(message.toString());
+
     }
 }

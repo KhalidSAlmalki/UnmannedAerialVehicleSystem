@@ -37,7 +37,7 @@ public class Location {
         this.altitude = altitude;
     }
 
-    public String getLocation(){
+    public String getLocation() {
         return "";
     }
 }
