@@ -87,6 +87,28 @@ public class UAVS {
         });
 
 
+
+
+        JButton temp = new JButton();
+        temp.setSize(100,100);
+        temp.setText("temp");
+        guiFrame.add(temp);
+
+        temp.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Process proc = null;
+                try {
+                    proc = Runtime.getRuntime().exec("java -jar /Users/khalidalmalki/Documents/GitHub/UnmannedAerialVehicleSystem/out/artifacts/TemperatureSVM_jar/TemperatureSVM.jar");
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+                System.out.println("temp on in proceess id ");
+            }
+        });
+
+
         //
 
         //make sure the JFrame is visible

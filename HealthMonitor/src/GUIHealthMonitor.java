@@ -24,8 +24,22 @@ public class GUIHealthMonitor {
         textArea = new JTextArea();
         textArea.setBounds(guiFrame.getBounds());
         guiFrame.add(textArea);
+
+        textArea.setEditable(false);
+        JScrollPane scroll = new JScrollPane(textArea);
+        scroll.setBounds(guiFrame.getBounds());
+
+        guiFrame.getContentPane().add(scroll);
+        guiFrame. setLocationRelativeTo ( null );
+
+
+
+
+
         //make sure the JFrame is visible
         guiFrame.setVisible(true);
+
+
     }
 
     public void addValueToTeaxArea(String text) {
@@ -33,6 +47,7 @@ public class GUIHealthMonitor {
         textArea.append("\n");
         textArea.append(text);
         textArea.getAutoscrolls();
+
 
 
     }
