@@ -36,7 +36,6 @@ public class NavigationSystem {
     private void keepBeating() {
         try {
             while (true) {
-                Thread.sleep(1000);
                 Random random = new Random();
                 label.setText("Navigation System: We are at a height of " + 10000 / random.nextInt(10) + "m !!");
             }

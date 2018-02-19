@@ -22,14 +22,13 @@ class HeartbeatTactics {
 
     Thread runHeartbeatTactics(String id, String msg) throws Exception {
         Thread thread = new Thread(() -> {
-            while (true) {
-                try {
-                    Thread.sleep(1000);
-                    beat(id, msg);
-                } catch (Exception e) {
-                    break;
-                }
+
+            try {
+                beat(id, msg);
+            } catch (RemoteException e) {
+                e.printStackTrace();
             }
+
         });
         thread.start();
 

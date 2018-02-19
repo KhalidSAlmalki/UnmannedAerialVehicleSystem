@@ -51,7 +51,6 @@ public class TemperatureFacade {
         Random random = new Random();
         while (true) {
             int x = random.nextInt(100);
-            Thread.sleep(1000);
             label.setText("Temperature: " + (float) 100 / x);
         }
     }

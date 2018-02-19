@@ -22,8 +22,8 @@ public class UAVS {
 
         //make sure the program exits when the frame closes
         guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        guiFrame.setTitle("Health Monitor  GUI");
-        guiFrame.setSize(400, 400);
+        guiFrame.setTitle("SYSTEM GUI");
+        guiFrame.setSize(400, 80);
 
         //This will center the JFrame in the middle of the screen
         guiFrame.setLocationRelativeTo(null);
@@ -38,7 +38,7 @@ public class UAVS {
             public void actionPerformed(ActionEvent e) {
                 Process proc = null;
                 try {
-                    proc = Runtime.getRuntime().exec("java -jar /Users/khalidalmalki/Documents/GitHub/UnmannedAerialVehicleSystem/out/artifacts/HealthMonitor_jar/HealthMonitor.jar");
+                    proc = Runtime.getRuntime().exec("java -jar "+Workplacepath+"/out/artifacts/HealthMonitor_jar/HealthMonitor.jar");
 
                     System.out.println(proc);
                 } catch (IOException e1) {

@@ -65,11 +65,11 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
         timer.scheduleAtFixedRate(timerTask, 0, 100);
     }
 
-    private void detectFailedSystem() {
+    private synchronized void  detectFailedSystem() {
         for (String name : beatsMap.keySet()) {
             Message beat = beatsMap.get(name);
 
-            if (getDateDiff(beat.getTimestamp()) > 10) {
+            if (getDateDiff(beat.getTimestamp()) > 5) {
 
                 //  System.out.println(beat.getId() +" is crashed !!"+ " process id"+beat.getPID());
                 guiHealthMonitor.addValueToTeaxArea(beat.getId() + " is crashed !!" + " process id" + beat.getPID());

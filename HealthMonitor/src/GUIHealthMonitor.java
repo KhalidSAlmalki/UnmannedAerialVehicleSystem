@@ -6,7 +6,7 @@ import javax.swing.*;
 public class GUIHealthMonitor {
 
     JTextArea textArea;
-
+    JScrollPane scroll;
     public GUIHealthMonitor() {
         JFrame guiFrame = new JFrame();
 
@@ -26,7 +26,7 @@ public class GUIHealthMonitor {
         guiFrame.add(textArea);
 
         textArea.setEditable(false);
-        JScrollPane scroll = new JScrollPane(textArea);
+         scroll = new JScrollPane(textArea);
         scroll.setBounds(guiFrame.getBounds());
 
         guiFrame.getContentPane().add(scroll);
@@ -46,7 +46,7 @@ public class GUIHealthMonitor {
 
         textArea.append("\n");
         textArea.append(text);
-        textArea.getAutoscrolls();
+
 
 
 

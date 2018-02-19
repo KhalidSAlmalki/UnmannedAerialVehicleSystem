@@ -65,8 +65,7 @@ public class CameraFacade {
         while (true) {
             int index = random.nextInt(100);
 
-           String curentStv =  dataStreaming.get(index);
-            Thread.sleep(1000);
+           String curentStv =  dataStreaming.get(50);
 
             label.setText("observing: " + curentStv);
         }
