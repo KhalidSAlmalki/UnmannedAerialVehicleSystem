@@ -8,7 +8,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class HealthMonitorDashboard extends UnicastRemoteObject implements Body {
-    Map<String, Message> beatsMap = new HashMap<String, Message>();
+    Map<Long, Message> beatsMap = new HashMap<>();
     GUIHealthMonitor guiHealthMonitor;
 
     public HealthMonitorDashboard() throws RemoteException {
@@ -44,19 +44,19 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
     }
 
     private synchronized void detectFailedSystem() {
-        for (String name : beatsMap.keySet()) {
+        for (Long name : beatsMap.keySet()) {
             Message message = beatsMap.get(name);
             if (!message.getRead() && getDateDiff(message.getTimestamp()) > 3000) {
                 guiHealthMonitor.addClosedApplication(message.getTime(), message.getId(), message.getPID());
                 message.setRead(true);
-                beatsMap.put(message.getId(), message);
+                beatsMap.put(message.getPID(), message);
             }
         }
     }
 
     @Override
     public void beat(Message message) throws RemoteException {
-        beatsMap.put(message.getId(), message);
+        beatsMap.put(message.getPID(), message);
         guiHealthMonitor.addRunningApplication(message.getTime(), message.getId(), message.getPID());
     }
 }

@@ -57,7 +57,7 @@ public class UAVS {
         // button  camera
         JButton camera = new JButton();
         camera.setSize(100, 100);
-        camera.setText("camera");
+        camera.setText("Camera System");
 
         camera.addActionListener(new ActionListener() {
             @Override
@@ -76,7 +76,7 @@ public class UAVS {
         // Gps  camera
         JButton Gps = new JButton();
         Gps.setSize(100, 100);
-        Gps.setText("GPS");
+        Gps.setText("GPS System");
         guiFrame.add(Gps);
 
         Gps.addActionListener(new ActionListener() {
@@ -92,12 +92,12 @@ public class UAVS {
         });
 
 
-        JButton temp = new JButton();
-        temp.setSize(100, 100);
-        temp.setText("temp");
-        guiFrame.add(temp);
+        JButton temperature = new JButton();
+        temperature.setSize(100, 100);
+        temperature.setText("Temperature System");
+        guiFrame.add(temperature);
 
-        temp.addActionListener(new ActionListener() {
+        temperature.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Process proc = null;
