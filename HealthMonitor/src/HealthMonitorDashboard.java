@@ -6,12 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 public class HealthMonitorDashboard extends UnicastRemoteObject implements Body {
-
     Map<String, Message> beatsMap = new HashMap<String, Message>();
-
     GUIHealthMonitor guiHealthMonitor;
 
     public HealthMonitorDashboard() throws RemoteException {
@@ -21,26 +18,18 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
     }
 
     public static long getDateDiff(long timeUpdate) {
-        long diffInMillies = Math.abs(System.currentTimeMillis() - timeUpdate);
-        return TimeUnit.SECONDS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        return  Math.abs(System.currentTimeMillis() - timeUpdate);
     }
 
     public static void main(String args[]) {
-        // thread check after 10 second
         try {
             HealthMonitorDashboard obj = new HealthMonitorDashboard();
             LocateRegistry.createRegistry(2020);
             Naming.bind("//localhost:2020/svm", obj);
-
-            System.err.println("Health Monitor started running.");
-
         } catch (Exception e) {
             System.err.println("Health Monitor Dashboard exception: " + e.toString());
             e.printStackTrace();
         }
-
-//        while (true) {
-//        }
     }
 
     private void runCheckingFailedSystem() {
@@ -56,11 +45,11 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
 
     private synchronized void detectFailedSystem() {
         for (String name : beatsMap.keySet()) {
-            Message beat = beatsMap.get(name);
-            if (getDateDiff(beat.getTimestamp()) > 3 && !beat.getRead()) {
-                guiHealthMonitor.addClosedApplication(beat.getId() + " has crashed !!" + " [PID: " + beat.getPID() + "]");
-                beat.setRead(true);
-                beatsMap.put(beat.getId(), beat);
+            Message message = beatsMap.get(name);
+            if (!message.getRead() && getDateDiff(message.getTimestamp()) > 3000) {
+                guiHealthMonitor.addClosedApplication(message.getTime(), message.getId(), message.getPID());
+                message.setRead(true);
+                beatsMap.put(message.getId(), message);
             }
         }
     }
@@ -68,7 +57,6 @@ public class HealthMonitorDashboard extends UnicastRemoteObject implements Body 
     @Override
     public void beat(Message message) throws RemoteException {
         beatsMap.put(message.getId(), message);
-        guiHealthMonitor.addRunningApplication(message.toString());
-
+        guiHealthMonitor.addRunningApplication(message.getTime(), message.getId(), message.getPID());
     }
 }

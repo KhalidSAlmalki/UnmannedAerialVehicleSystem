@@ -2,40 +2,50 @@
 //could just import javax.swing.* and java.awt.* etc..
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class GUIHealthMonitor {
 
-    JTextArea runningPane, closedPane;
+    private final DefaultTableModel closedModel, runningModel;
 
     public GUIHealthMonitor() {
         JFrame guiFrame = new JFrame();
 
         guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guiFrame.setTitle("Health Monitor  GUI");
-        guiFrame.setSize(400, 400);
+        guiFrame.setSize(900, 600);
 
-        runningPane = new JTextArea();
-        runningPane.setBounds(guiFrame.getBounds());
-        guiFrame.add(runningPane);
+        runningModel = new DefaultTableModel(new Object[]{"Time", "Application", "PID"}, 0);
+        JTable runningT = new JTable(runningModel);
+        runningT.setShowGrid(false);
+        runningT.setBounds(guiFrame.getBounds());
+        runningT.setForeground(Color.decode("#006400"));
+        JScrollPane runningSP = new JScrollPane(runningT);
+        JPanel runningP = new JPanel();
+        runningP.setLayout(new BoxLayout(runningP, BoxLayout.Y_AXIS));
+        JLabel runningL = new JLabel("Running applications");
+        runningP.add(runningL);
+        runningP.add(runningSP);
+        guiFrame.add(runningP);
 
-        closedPane = new JTextArea();
-        closedPane.setBounds(guiFrame.getBounds());
-        guiFrame.add(closedPane);
+        closedModel = new DefaultTableModel(new Object[]{"Time", "Application", "PID"}, 0);
+        JTable closedT = new JTable(closedModel);
+        closedT.setShowGrid(false);
+        closedT.setBounds(guiFrame.getBounds());
+        closedT.setForeground(Color.RED);
+        JScrollPane closedSP = new JScrollPane(closedT);
+        JPanel closedP = new JPanel();
+        closedP.setLayout(new BoxLayout(closedP, BoxLayout.Y_AXIS));
+        JLabel closedL = new JLabel("Closed applications");
+        closedP.add(closedL);
+        closedP.add(closedSP);
+        guiFrame.add(closedP);
 
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
-                runningPane, closedPane);
+                runningP, closedP);
         splitPane.setOneTouchExpandable(true);
-        splitPane.setDividerLocation(150);
-
-//        textArea = new JTextArea();
-//        textArea.setBounds(guiFrame.getBounds());
-//        guiFrame.add(textArea);
-//
-//        textArea.setEditable(false);
-//        scroll = new JScrollPane(textArea);
-//        scroll.setBounds(guiFrame.getBounds());
-//        guiFrame.getContentPane().add(scroll);
+        splitPane.setDividerLocation(450);
 
         guiFrame.add(splitPane);
 
@@ -43,18 +53,11 @@ public class GUIHealthMonitor {
         guiFrame.setVisible(true);
     }
 
-//    public void addValueToTextArea(String text) {
-//        textArea.append("\n");
-//        textArea.append(text);
-//    }
-
-    public void addRunningApplication(String text){
-        runningPane.append("\n");
-        runningPane.append(text);
+    public void addRunningApplication(String time, String application, long PID) {
+        runningModel.addRow(new Object[]{time, application, PID});
     }
 
-    public void addClosedApplication(String text){
-        closedPane.append("\n");
-        closedPane.append(text);
+    public void addClosedApplication(String time, String application, long PID) {
+        closedModel.addRow(new Object[]{time, application, PID});
     }
 }
