@@ -32,7 +32,7 @@ public class UAVS {
         //make sure the program exits when the frame closes
         guiFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         guiFrame.setTitle("SYSTEM GUI");
-        guiFrame.setSize(400, 80);
+        guiFrame.setSize(600, 80);
 
         //This will center the JFrame in the middle of the screen
         guiFrame.setLocationRelativeTo(null);
