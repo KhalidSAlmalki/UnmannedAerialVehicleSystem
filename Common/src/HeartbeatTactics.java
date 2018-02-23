@@ -38,7 +38,7 @@ class HeartbeatTactics {
             };
 
             java.util.Timer timer = new Timer(true);
-            timer.scheduleAtFixedRate(timerTask, 0, 10000);
+            timer.scheduleAtFixedRate(timerTask, 0, 3000);
 
 
 
