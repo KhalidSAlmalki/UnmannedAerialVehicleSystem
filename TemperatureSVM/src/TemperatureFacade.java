@@ -26,7 +26,7 @@ public class TemperatureFacade {
         } catch (Exception e) {
             e.printStackTrace();
             heartbeatThread.cancel();
-            camera.stopUI();
+//            camera.stopUI();
             throw e;
         }
     }
