@@ -47,7 +47,10 @@ public class X1Main extends UnicastRemoteObject implements CriticalComponent {
                         xComponent.setOutput(method.getOperationID(), "X1Main", output);
                 }
             }
-            Thread.sleep(new Random().nextInt(20) * 100);
+            Random random = new Random();
+            Thread.sleep(random.nextInt(20) * 100);
+            int x = random.nextInt(50);
+            int a = 100 / x;
         }
     }
 
