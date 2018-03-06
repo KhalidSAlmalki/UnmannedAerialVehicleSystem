@@ -1,7 +1,4 @@
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
-import java.rmi.AlreadyBoundException;
+import javax.swing.*;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -14,6 +11,8 @@ import java.util.Random;
 
 public class X2Main extends UnicastRemoteObject implements CriticalComponent {
     private Queue<CriticalMethod> methods;
+    private int lastOperationID = -1;
+    static X2Main x2Main = null;
 
     private X2Main() throws RemoteException {
         super();
@@ -23,22 +22,28 @@ public class X2Main extends UnicastRemoteObject implements CriticalComponent {
     @Override
     public void execute(int operationID, String methodName, int first, int second) throws NoSuchMethodException {
         this.methods.add(new CriticalMethod(methodName, operationID, first, second));
+        this.lastOperationID = operationID;
     }
 
-    public static void main(String[] args) throws InterruptedException, InvocationTargetException, IllegalAccessException, RemoteException, MalformedURLException, AlreadyBoundException, NotBoundException {
-        X2Main x2Main = new X2Main();
-        Naming.bind("//localhost:2020/X2", x2Main);
-        x2Main.run();
+    public static void main(String[] args) {
+        try {
+            x2Main = new X2Main();
+            Naming.rebind("//localhost:2020/X2", x2Main);
+            x2Main.run();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 
-    private void run() throws InterruptedException, InvocationTargetException, IllegalAccessException, RemoteException, NotBoundException {
+    private void run() throws InterruptedException, IllegalAccessException, RemoteException, NotBoundException {
         Registry registry = LocateRegistry.getRegistry(2020);
         CriticalOutput xComponent = null;
 
+        xComponent = (CriticalOutput) registry.lookup("XOutput");
         while (true) {
             if (!this.methods.isEmpty()) {
                 CriticalMethod method = this.methods.poll();
-                xComponent = (CriticalOutput) registry.lookup("XOutput");
                 if (xComponent.getOperationID() > method.getOperationID()) {
                     continue;
                 } else {
@@ -50,14 +55,14 @@ public class X2Main extends UnicastRemoteObject implements CriticalComponent {
             }
 
             Random random = new Random();
-            Thread.sleep(random.nextInt(20) * 100);
-            int x = random.nextInt(50);
+            Thread.sleep(random.nextInt(20) * 300);
+            int x = random.nextInt(20);
             int a = 100 / x;
         }
     }
 
     private int execute(String method, int first, int second, int operationID) {
-        System.out.println("["+operationID+"]" + method + ", " + first + ", " + second);
+        System.out.println("X2Main processing [" + operationID + "] " + method + "(" + first + ", " + second + ")");
         switch (method) {
             case "add":
                 return add(first, second);
@@ -83,11 +88,22 @@ public class X2Main extends UnicastRemoteObject implements CriticalComponent {
 
     @Override
     public int div(int a, int b) {
-        return a / b;
+        try {return a / b;}
+        catch (Exception e) {return 0;}
     }
 
     @Override
     public int mult(int a, int b) {
         return a * b;
+    }
+
+    @Override
+    public int getLastOperationID() throws RemoteException {
+        return this.lastOperationID;
+    }
+
+    @Override
+    public String toString(){
+        return "X2Main";
     }
 }

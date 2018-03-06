@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.util.Random;
-import java.util.Timer;
 import java.util.TimerTask;
 
 /**

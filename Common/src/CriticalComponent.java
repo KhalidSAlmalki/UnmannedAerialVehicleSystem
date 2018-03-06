@@ -10,4 +10,6 @@ public interface CriticalComponent extends Remote {
     int sub(int a, int b) throws RemoteException;
     int div(int a, int b) throws RemoteException;
     int mult(int a, int b) throws RemoteException;
+
+    int getLastOperationID() throws RemoteException;
 }
