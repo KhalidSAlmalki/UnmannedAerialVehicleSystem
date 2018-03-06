@@ -8,11 +8,11 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
-public class X2Main extends UnicastRemoteObject implements CriticalComponent {
+public class FCMain extends UnicastRemoteObject implements CriticalComponent {
     private Queue<CriticalMethod> methods;
-    static X2Main x2Main = null;
+    static FCMain fc = null;
 
-    private X2Main() throws RemoteException {
+    private FCMain() throws RemoteException {
         super();
         this.methods = new LinkedList<>();
     }
@@ -20,14 +20,14 @@ public class X2Main extends UnicastRemoteObject implements CriticalComponent {
     @Override
     public void execute(int operationID, String methodName, int first, int second) throws NoSuchMethodException {
         this.methods.add(new CriticalMethod(methodName, operationID, first, second));
-        System.out.println("X2: Added command number " + operationID + " to list of operations to perform.");
+        System.out.println("FC1: Added command [" + operationID + "] to list of operations to perform.");
     }
 
     public static void main(String[] args) {
         try {
-            x2Main = new X2Main();
-            Naming.rebind("//localhost:2020/X2", x2Main);
-            x2Main.run();
+            fc = new FCMain();
+            Naming.rebind("//localhost:2020/FC1", fc);
+            fc.run();
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(1);
@@ -43,15 +43,15 @@ public class X2Main extends UnicastRemoteObject implements CriticalComponent {
             if (!this.methods.isEmpty()) {
                 CriticalMethod method = this.methods.poll();
                 if (xComponent.getOperationID() > method.getOperationID()) {
-                    System.out.println("X2: No need to execute command [" + method.getOperationID() + "] as Output is at " + xComponent.getOperationID() + "! Proceed to next command.");
+                    System.out.println("FC1: No need to execute command [" + method.getOperationID() + "] as Output is at " + xComponent.getOperationID() + "! Proceed to next command.");
                     continue;
                 } else {
                     int output = execute(method.getMethod(), method.getFirst(), method.getSecond(), method.getOperationID());
 //                    xComponent = (CriticalOutput) registry.lookup("XOutput");
                     if (xComponent.getOperationID() < method.getOperationID())
-                        xComponent.setOutput(method.getOperationID(), "X2Main", output);
+                        xComponent.setOutput(method.getOperationID(), "FC1Main", output);
                     else
-                        System.out.println("X2: Command [" + method.getOperationID() + "] took a lot of time to execute. Output was provided by other component. Ignoring this result.");
+                        System.out.println("FC1: Command [" + method.getOperationID() + "] took a lot of time to execute. Output was provided by other component. Ignoring this result.");
                 }
             }
             Random random = new Random();
@@ -62,7 +62,7 @@ public class X2Main extends UnicastRemoteObject implements CriticalComponent {
     }
 
     private int execute(String method, int first, int second, int operationID) {
-        System.out.println("X2: Processing [" + operationID + "] " + method + "(" + first + ", " + second + ")");
+        System.out.println("FC1: Processing [" + operationID + "] " + method + "(" + first + ", " + second + ")");
         Random random = new Random();
         try {
             Thread.sleep(random.nextInt(25) * 500);
@@ -105,13 +105,8 @@ public class X2Main extends UnicastRemoteObject implements CriticalComponent {
         return a * b;
     }
 
-//    @Override
-//    public int getLastOperationID() throws RemoteException {
-//        return this.lastOperationID;
-//    }
-
     @Override
     public String toString() {
-        return "X2Main";
+        return "FC1Main";
     }
 }

@@ -14,12 +14,12 @@ rem ping -n 1 127.0.0.1
 call XOutput.bat
 rem sleep 1
 ping -n 1 127.0.0.1
-call X1.bat
+call FlightControl1.bat
 rem sleep 1
 ping -n 1 127.0.0.1
-call X2.bat
+call FlightControl2.bat
 rem sleep 1
 ping -n 1 127.0.0.1
 call XInput.bat
 rem sleep 10
-ping -n 1 127.0.0.1
+ping -n 4 127.0.0.1

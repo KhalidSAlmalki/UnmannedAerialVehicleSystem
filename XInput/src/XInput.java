@@ -60,10 +60,10 @@ public class XInput extends UnicastRemoteObject {
             e.printStackTrace();
         }
 
-        CriticalComponent x1Component = (CriticalComponent) registry.lookup("X1");
-        workingComponents.put("X1", x1Component);
+        CriticalComponent fc1 = (CriticalComponent) registry.lookup("FC1");
+        workingComponents.put("FC1", fc1);
 
-        CriticalComponent x2Component = (CriticalComponent) registry.lookup("X2");
-        workingComponents.put("X2", x2Component);
+        CriticalComponent fc2 = (CriticalComponent) registry.lookup("FC2");
+        workingComponents.put("FC2", fc2);
     }
 }

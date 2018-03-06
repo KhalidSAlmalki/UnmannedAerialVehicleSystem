@@ -4,14 +4,13 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CameraSystem/CameraSystem.iml" filepath="$PROJECT_DIR$/CameraSystem/CameraSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/Common/Common.iml" filepath="$PROJECT_DIR$/Common/Common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FlightControl1/FlightControl1.iml" filepath="$PROJECT_DIR$/FlightControl1/FlightControl1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FlightControl2/FlightControl2.iml" filepath="$PROJECT_DIR$/FlightControl2/FlightControl2.iml" />
       <module fileurl="file://$PROJECT_DIR$/GPSSystem/GPSSystem.iml" filepath="$PROJECT_DIR$/GPSSystem/GPSSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/HealthMonitor/HealthMonitor.iml" filepath="$PROJECT_DIR$/HealthMonitor/HealthMonitor.iml" />
       <module fileurl="file://$PROJECT_DIR$/TemperatureSVM/TemperatureSVM.iml" filepath="$PROJECT_DIR$/TemperatureSVM/TemperatureSVM.iml" />
       <module fileurl="file://$PROJECT_DIR$/UAVS/UAVS.iml" filepath="$PROJECT_DIR$/UAVS/UAVS.iml" />
       <module fileurl="file://$PROJECT_DIR$/UnmannedAerialVehicleSystem.iml" filepath="$PROJECT_DIR$/UnmannedAerialVehicleSystem.iml" />
-      <module fileurl="file://$PROJECT_DIR$/X1/X1.iml" filepath="$PROJECT_DIR$/X1/X1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/X2/X2.iml" filepath="$PROJECT_DIR$/X2/X2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/X3/X3.iml" filepath="$PROJECT_DIR$/X3/X3.iml" />
       <module fileurl="file://$PROJECT_DIR$/XInput/XInput.iml" filepath="$PROJECT_DIR$/XInput/XInput.iml" />
       <module fileurl="file://$PROJECT_DIR$/XOutput/XOutput.iml" filepath="$PROJECT_DIR$/XOutput/XOutput.iml" />
     </modules>
