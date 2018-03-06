@@ -22,7 +22,8 @@ public class X2Main extends UnicastRemoteObject implements CriticalComponent {
     @Override
     public void execute(int operationID, String methodName, int first, int second) throws NoSuchMethodException {
         this.methods.add(new CriticalMethod(methodName, operationID, first, second));
-        this.lastOperationID = operationID;
+//        this.lastOperationID = operationID;
+        System.out.println("Added command number " + operationID + " to list of operations to perform.");
     }
 
     public static void main(String[] args) {
@@ -45,24 +46,31 @@ public class X2Main extends UnicastRemoteObject implements CriticalComponent {
             if (!this.methods.isEmpty()) {
                 CriticalMethod method = this.methods.poll();
                 if (xComponent.getOperationID() > method.getOperationID()) {
+                    System.out.println("No need to execute command [" + method.getOperationID() + "] as Output is at " + xComponent.getOperationID() + "! Proceed to next command.");
                     continue;
                 } else {
                     int output = execute(method.getMethod(), method.getFirst(), method.getSecond(), method.getOperationID());
                     xComponent = (CriticalOutput) registry.lookup("XOutput");
                     if (xComponent.getOperationID() < method.getOperationID())
                         xComponent.setOutput(method.getOperationID(), "X2Main", output);
+                    else
+                        System.out.println("Command [" + method.getOperationID() + "] took a lot of time to execute. Output was provided by other component. Ignoring this result.");
                 }
             }
-
             Random random = new Random();
-            Thread.sleep(random.nextInt(20) * 300);
-            int x = random.nextInt(20);
+            int x = random.nextInt(30);
+            Thread.sleep(1000);
             int a = 100 / x;
         }
     }
 
     private int execute(String method, int first, int second, int operationID) {
-        System.out.println("X2Main processing [" + operationID + "] " + method + "(" + first + ", " + second + ")");
+        System.out.println("Processing [" + operationID + "] " + method + "(" + first + ", " + second + ")");
+        Random random = new Random();
+        try {
+            Thread.sleep(random.nextInt(25) * 500);
+        } catch (InterruptedException e) {
+        }
         switch (method) {
             case "add":
                 return add(first, second);
@@ -88,8 +96,11 @@ public class X2Main extends UnicastRemoteObject implements CriticalComponent {
 
     @Override
     public int div(int a, int b) {
-        try {return a / b;}
-        catch (Exception e) {return 0;}
+        try {
+            return a / b;
+        } catch (Exception e) {
+            return 0;
+        }
     }
 
     @Override
@@ -97,13 +108,13 @@ public class X2Main extends UnicastRemoteObject implements CriticalComponent {
         return a * b;
     }
 
-    @Override
-    public int getLastOperationID() throws RemoteException {
-        return this.lastOperationID;
-    }
+//    @Override
+//    public int getLastOperationID() throws RemoteException {
+//        return this.lastOperationID;
+//    }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "X2Main";
     }
 }
