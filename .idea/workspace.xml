@@ -9,20 +9,16 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a954c4f-13a5-4c01-95b8-4d161d2a0680" name="Default" comment="Created Common, HealthMonitor and TemperatureSVM modules.">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/x1.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/artifacts/x2.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/X1.jar" afterPath="$PROJECT_DIR$/out/artifacts/X1.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/X2.jar" afterPath="$PROJECT_DIR$/out/artifacts/X2.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/XInput.jar" afterPath="$PROJECT_DIR$/out/artifacts/XInput.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/XOutput.jar" afterPath="$PROJECT_DIR$/out/artifacts/XOutput.jar" />
+    <list default="true" id="9a954c4f-13a5-4c01-95b8-4d161d2a0680" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Common/src/CriticalComponent.java" afterPath="$PROJECT_DIR$/Common/src/CriticalComponent.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/X1/src/X1Main.java" afterPath="$PROJECT_DIR$/X1/src/X1Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/X2/src/X2Main.java" afterPath="$PROJECT_DIR$/X2/src/X2Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XInput/src/XInput.java" afterPath="$PROJECT_DIR$/XInput/src/XInput.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XOutput/src/XOutput.java" afterPath="$PROJECT_DIR$/XOutput/src/XOutput.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/Start.bat" afterPath="$PROJECT_DIR$/out/artifacts/Start.bat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/X1.bat" afterPath="$PROJECT_DIR$/out/artifacts/X1.bat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/X2.bat" afterPath="$PROJECT_DIR$/out/artifacts/X2.bat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/XInput.bat" afterPath="$PROJECT_DIR$/out/artifacts/XInput.bat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/XOutput.bat" afterPath="$PROJECT_DIR$/out/artifacts/XOutput.bat" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -51,28 +47,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="X1Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="X1Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/X1/src/X1Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="54" column="24" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
+            <state relative-caret-position="-552">
+              <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3554#3555#0" expanded="true" />
-                <element signature="e#3582#3583#0" expanded="true" />
+                <element signature="e#3486#3487#0" expanded="true" />
+                <element signature="e#3514#3515#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="X2Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="X2Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/X2/src/X2Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="70" column="47" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
+            <state relative-caret-position="1056">
+              <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4021#4022#0" expanded="true" />
+                <element signature="e#3991#3992#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -81,8 +77,8 @@
       <file leaf-file-name="XOutput.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/XOutput/src/XOutput.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+            <state relative-caret-position="698">
+              <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,8 +89,8 @@
       <file leaf-file-name="XInput.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/XInput/src/XInput.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="55" />
+            <state relative-caret-position="990">
+              <caret line="45" column="52" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -177,12 +173,12 @@
         <option value="$PROJECT_DIR$/Common/src/CriticalOutput.java" />
         <option value="$PROJECT_DIR$/Common/src/CriticalMethod.java" />
         <option value="$PROJECT_DIR$/X/src/XMain.java" />
-        <option value="$PROJECT_DIR$/XOutput/src/XOutput.java" />
         <option value="$PROJECT_DIR$/GPSSystem/src/GPSFacade.java" />
         <option value="$PROJECT_DIR$/Common/src/CriticalComponent.java" />
-        <option value="$PROJECT_DIR$/XInput/src/XInput.java" />
-        <option value="$PROJECT_DIR$/X2/src/X2Main.java" />
         <option value="$PROJECT_DIR$/X1/src/X1Main.java" />
+        <option value="$PROJECT_DIR$/X2/src/X2Main.java" />
+        <option value="$PROJECT_DIR$/XOutput/src/XOutput.java" />
+        <option value="$PROJECT_DIR$/XInput/src/XInput.java" />
       </list>
     </option>
   </component>
@@ -244,6 +240,16 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="UnmannedAerialVehicleSystem" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UnmannedAerialVehicleSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UnmannedAerialVehicleSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -623,6 +629,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960895" sideWeight="0.5021482" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960895" sideWeight="0.49785176" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17883995" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3329609" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16541353" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -631,16 +638,15 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17883995" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0027777778" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32849163" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -695,7 +701,8 @@
     <MESSAGE value="Added uas.navigation.Main for creating a dummy GUI depicting the execution of Navigation System" />
     <MESSAGE value="Added UI to NavigationSystem with a beating of 1second (for testing purposes)." />
     <MESSAGE value="Created Common, HealthMonitor and TemperatureSVM modules." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Common, HealthMonitor and TemperatureSVM modules." />
+    <MESSAGE value="Updated Xinput with no recovery" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Xinput with no recovery" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -913,10 +920,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/X1/src/X1Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-552">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3486#3487#0" expanded="true" />
+            <element signature="e#3514#3515#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/XOutput/src/XOutput.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="9" column="61" selection-start-line="9" selection-start-column="61" selection-end-line="9" selection-end-column="61" />
+        <state relative-caret-position="698">
+          <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -925,8 +944,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/XInput/src/XInput.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="48" column="16" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="55" />
+        <state relative-caret-position="990">
+          <caret line="45" column="52" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -935,23 +954,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/X2/src/X2Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="70" column="47" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
+        <state relative-caret-position="1056">
+          <caret line="66" column="32" selection-start-line="66" selection-start-column="32" selection-end-line="66" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4021#4022#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/X1/src/X1Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="54" column="24" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3554#3555#0" expanded="true" />
-            <element signature="e#3582#3583#0" expanded="true" />
+            <element signature="e#3991#3992#0" expanded="true" />
           </folding>
         </state>
       </provider>

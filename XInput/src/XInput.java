@@ -29,7 +29,7 @@ public class XInput extends UnicastRemoteObject {
         while (true) {
             try {
                 int methodNumber = random.nextInt(4), first = random.nextInt(10), second = random.nextInt(10);
-                System.out.println("[" + operationID + "] Commanding processors to '" + methods[methodNumber] + "' with input values " + first + " and " + second);
+                System.out.println("XInput: [" + operationID + "] Commanding processors to '" + methods[methodNumber] + "' with input values " + first + " and " + second);
                 Iterator<Map.Entry<String, CriticalComponent>> iterator = workingComponents.entrySet().iterator();
                 while (iterator.hasNext()) {
                     Map.Entry<String, CriticalComponent> entry = iterator.next();
@@ -43,7 +43,7 @@ public class XInput extends UnicastRemoteObject {
                 }
 
                 for (String componentName : deadComponents) {
-                    System.out.println(componentName + " is dead!");
+                    System.out.println("XInput: " + componentName + " is dead!");
                 }
                 operationID++;
                 Thread.sleep(random.nextInt(25) * 400);

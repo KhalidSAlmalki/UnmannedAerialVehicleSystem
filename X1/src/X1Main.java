@@ -10,7 +10,6 @@ import java.util.Random;
 
 public class X1Main extends UnicastRemoteObject implements CriticalComponent {
     private Queue<CriticalMethod> methods;
-    private int lastOperationID = -1;
     static X1Main x1Main = null;
 
     private X1Main() throws RemoteException {
@@ -21,8 +20,7 @@ public class X1Main extends UnicastRemoteObject implements CriticalComponent {
     @Override
     public void execute(int operationID, String methodName, int first, int second) throws NoSuchMethodException {
         this.methods.add(new CriticalMethod(methodName, operationID, first, second));
-//        this.lastOperationID = operationID;
-        System.out.println("Added command [" + operationID + "] to list of operations to perform.");
+        System.out.println("X1: Added command [" + operationID + "] to list of operations to perform.");
     }
 
     public static void main(String[] args) {
@@ -45,7 +43,7 @@ public class X1Main extends UnicastRemoteObject implements CriticalComponent {
             if (!this.methods.isEmpty()) {
                 CriticalMethod method = this.methods.poll();
                 if (xComponent.getOperationID() > method.getOperationID()) {
-                    System.out.println("No need to execute command [" + method.getOperationID() + "] as Output is at " + xComponent.getOperationID() + "! Proceed to next command.");
+                    System.out.println("X1: No need to execute command [" + method.getOperationID() + "] as Output is at " + xComponent.getOperationID() + "! Proceed to next command.");
                     continue;
                 } else {
                     int output = execute(method.getMethod(), method.getFirst(), method.getSecond(), method.getOperationID());
@@ -53,7 +51,7 @@ public class X1Main extends UnicastRemoteObject implements CriticalComponent {
                     if (xComponent.getOperationID() < method.getOperationID())
                         xComponent.setOutput(method.getOperationID(), "X1Main", output);
                     else
-                        System.out.println("Command [" + method.getOperationID() + "] took a lot of time to execute. Output was provided by other component. Ignoring this result.");
+                        System.out.println("X1: Command [" + method.getOperationID() + "] took a lot of time to execute. Output was provided by other component. Ignoring this result.");
                 }
             }
             Random random = new Random();
@@ -64,7 +62,7 @@ public class X1Main extends UnicastRemoteObject implements CriticalComponent {
     }
 
     private int execute(String method, int first, int second, int operationID) {
-        System.out.println("Processing [" + operationID + "] " + method + "(" + first + ", " + second + ")");
+        System.out.println("X1: Processing [" + operationID + "] " + method + "(" + first + ", " + second + ")");
         Random random = new Random();
         try {
             Thread.sleep(random.nextInt(25) * 500);

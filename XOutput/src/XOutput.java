@@ -38,6 +38,6 @@ public class XOutput extends UnicastRemoteObject implements CriticalOutput {
         this.operationID = operationID;
         this.xMain = xMain;
         this.output = output;
-        System.out.println("[" + operationID + "] " + xMain + " : " + output);
+        System.out.println("XOutput: [" + operationID + "] " + xMain + " : " + output);
     }
 }
