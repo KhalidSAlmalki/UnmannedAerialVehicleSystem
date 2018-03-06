@@ -47,7 +47,7 @@ public class X1Main extends UnicastRemoteObject implements CriticalComponent {
                     continue;
                 } else {
                     int output = execute(method.getMethod(), method.getFirst(), method.getSecond(), method.getOperationID());
-                    xComponent = (CriticalOutput) registry.lookup("XOutput");
+//                    xComponent = (CriticalOutput) registry.lookup("XOutput");
                     if (xComponent.getOperationID() < method.getOperationID())
                         xComponent.setOutput(method.getOperationID(), "X1Main", output);
                     else

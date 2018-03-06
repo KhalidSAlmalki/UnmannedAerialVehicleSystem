@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -11,7 +10,6 @@ import java.util.Random;
 
 public class X2Main extends UnicastRemoteObject implements CriticalComponent {
     private Queue<CriticalMethod> methods;
-    private int lastOperationID = -1;
     static X2Main x2Main = null;
 
     private X2Main() throws RemoteException {
@@ -49,7 +47,7 @@ public class X2Main extends UnicastRemoteObject implements CriticalComponent {
                     continue;
                 } else {
                     int output = execute(method.getMethod(), method.getFirst(), method.getSecond(), method.getOperationID());
-                    xComponent = (CriticalOutput) registry.lookup("XOutput");
+//                    xComponent = (CriticalOutput) registry.lookup("XOutput");
                     if (xComponent.getOperationID() < method.getOperationID())
                         xComponent.setOutput(method.getOperationID(), "X2Main", output);
                     else
