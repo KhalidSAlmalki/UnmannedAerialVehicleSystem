@@ -1,29 +1,30 @@
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 /**
  * Created by Palash on 3/1/2018.
  */
-public class XOutput extends UnicastRemoteObject implements CriticalOutput {
+public class FPMain extends UnicastRemoteObject implements CriticalOutput,Serializable {
 
-    private static XOutput xOutput;
+    private static FPMain fp;
     private int operationID = -1;
-    private String xMain;
-    private int output;
 
-    protected XOutput() throws RemoteException {
+    protected FPMain() throws RemoteException {
     }
 
     public static void main(String[] args) throws AlreadyBoundException, RemoteException, MalformedURLException {
-        xOutput = new XOutput();
-        xOutput.run();
+        fp = new FPMain();
+        Naming.bind("//localhost:2020/FlightPlanner", fp);
+        fp.run();
     }
 
     private void run() throws RemoteException, MalformedURLException, AlreadyBoundException {
-        Naming.bind("//localhost:2020/XOutput", xOutput);
         while (true) {
         }
     }
@@ -34,10 +35,8 @@ public class XOutput extends UnicastRemoteObject implements CriticalOutput {
     }
 
     @Override
-    public void setOutput(int operationID, String xMain, int output) {
+    public void setOutput(int operationID, String oa, int output) {
         this.operationID = operationID;
-        this.xMain = xMain;
-        this.output = output;
-        System.out.println("XOutput: [" + operationID + "] " + xMain + " : " + output);
+        System.out.println("FlightPlanner: [" + operationID + "] " + oa + " : " + output);
     }
 }

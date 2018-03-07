@@ -4,25 +4,34 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.server.UnicastRemoteObject;
 
-public class UAVS {
+public class UAVS extends UnicastRemoteObject {
 
     static String Workplacepath;
 
+    protected UAVS() throws RemoteException {
+    }
+
     public static void main(String[] args) throws IOException, InterruptedException {
-        Workplacepath = Paths.get(".").toAbsolutePath().normalize().toString();
-        setUpGUI();
+        LocateRegistry.createRegistry(2020);
+        while(true){}
 
-        Process p = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/HealthMonitor.jar");
-        Thread.sleep(1000);
-
-        Process p1 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/CameraSystem.jar");
-        Thread.sleep(1000);
-
-        Process p2 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/GPSSystem.jar");
-        Thread.sleep(1000);
-
-        Process p3 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/TemperatureSVM.jar");
+//        Workplacepath = Paths.get(".").toAbsolutePath().normalize().toString();
+//        setUpGUI();
+//
+//        Process p = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/HealthMonitor.jar");
+//        Thread.sleep(1000);
+//
+//        Process p1 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/CameraSystem.jar");
+//        Thread.sleep(1000);
+//
+//        Process p2 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/GPSSystem.jar");
+//        Thread.sleep(1000);
+//
+//        Process p3 = Runtime.getRuntime().exec("java -jar " + Workplacepath + "/TemperatureSVM.jar");
     }
 
     static void setUpGUI() {
