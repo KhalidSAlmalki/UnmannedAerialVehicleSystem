@@ -1,25 +1,9 @@
-rem call XInput.bat
-rem sleep 10
+call UAVS.bat
+ping -n 1 127.0.0.1
+call FlightPlanner.bat
+ping -n 1 127.0.0.1
+call ObjectAvoidance1.bat
+ping -n 1 127.0.0.1
+call ObjectAvoidance2.bat
 rem ping -n 5 127.0.0.1
-rem call XOutput.bat
-rem sleep 1
-rem ping -n 1 127.0.0.1
-rem call X1.bat
-rem sleep 1
-rem ping -n 1 127.0.0.1
-rem call X2.bat
-rem sleep 1
-rem ping -n 1 127.0.0.1
-
-call XOutput.bat
-rem sleep 1
-ping -n 1 127.0.0.1
-call FlightControl1.bat
-rem sleep 1
-ping -n 1 127.0.0.1
-call FlightControl2.bat
-rem sleep 1
-ping -n 1 127.0.0.1
-call XInput.bat
-rem sleep 10
-ping -n 4 127.0.0.1
+call ObjectDetection.bat

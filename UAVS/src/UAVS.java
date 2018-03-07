@@ -15,8 +15,9 @@ public class UAVS extends UnicastRemoteObject {
     protected UAVS() throws RemoteException {
     }
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws RemoteException {
         LocateRegistry.createRegistry(2020);
+        System.out.println("UAVS System");
         while(true){}
 
 //        Workplacepath = Paths.get(".").toAbsolutePath().normalize().toString();
