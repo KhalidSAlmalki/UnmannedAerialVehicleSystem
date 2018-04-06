@@ -25,7 +25,7 @@ public class ODMain extends UnicastRemoteObject {
     private void run() {
         int operationID = 0;
         Random random = new Random();
-            String[] methods = {"detect building", "detect bird", "detect enemy", "detect ally"};
+            String[] methods = {"add", "sub", "div", "mult"};
         while (true) {
             try {
                 int methodNumber = random.nextInt(4), first = random.nextInt(10), second = random.nextInt(10);

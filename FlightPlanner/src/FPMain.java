@@ -3,12 +3,14 @@ import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 /**
  * Created by Palash on 3/1/2018.
  */
-public class FPMain extends UnicastRemoteObject implements CriticalOutput {
+public class FPMain extends UnicastRemoteObject implements CriticalOutput,Serializable {
 
     private static FPMain fp;
     private int operationID = -1;

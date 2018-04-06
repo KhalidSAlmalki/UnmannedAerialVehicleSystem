@@ -38,7 +38,7 @@ public class OAMain1 extends UnicastRemoteObject implements CriticalComponent {
         Registry registry = LocateRegistry.getRegistry(2020);
         CriticalOutput xComponent = null;
 
-        xComponent = (CriticalOutput) registry.lookup("FlightPlanner");
+        xComponent = (CriticalOutput) registry.lookup("XOutput");
         while (true) {
             if (!this.methods.isEmpty()) {
                 CriticalMethod method = this.methods.poll();
@@ -47,6 +47,7 @@ public class OAMain1 extends UnicastRemoteObject implements CriticalComponent {
                     continue;
                 } else {
                     int output = execute(method.getMethod(), method.getFirst(), method.getSecond(), method.getOperationID());
+//                    xComponent = (CriticalOutput) registry.lookup("XOutput");
                     if (xComponent.getOperationID() < method.getOperationID())
                         xComponent.setOutput(method.getOperationID(), "OA1Main", output);
                     else
@@ -54,7 +55,7 @@ public class OAMain1 extends UnicastRemoteObject implements CriticalComponent {
                 }
             }
             Random random = new Random();
-            int x = random.nextInt(50);
+            int x = random.nextInt(30);
             Thread.sleep(1000);
             int a = 100 / x;
         }
@@ -68,30 +69,30 @@ public class OAMain1 extends UnicastRemoteObject implements CriticalComponent {
         } catch (InterruptedException e) {
         }
         switch (method) {
-            case "detect building":
-                return detectBuilding(first, second);
-            case "detect bird":
-                return detectBird(first, second);
-            case "detect enemy":
-                return detectEnemy(first, second);
-            case "detect ally":
-                return detectAlly(first, second);
+            case "add":
+                return add(first, second);
+            case "sub":
+                return sub(first, second);
+            case "div":
+                return div(first, second);
+            case "mult":
+                return mult(first, second);
         }
         return 0;
     }
 
     @Override
-    public int detectBuilding(int a, int b) {
+    public int add(int a, int b) {
         return a + b;
     }
 
     @Override
-    public int detectBird(int a, int b) {
+    public int sub(int a, int b) {
         return a - b;
     }
 
     @Override
-    public int detectEnemy(int a, int b) {
+    public int div(int a, int b) {
         try {
             return a / b;
         } catch (Exception e) {
@@ -100,7 +101,7 @@ public class OAMain1 extends UnicastRemoteObject implements CriticalComponent {
     }
 
     @Override
-    public int detectAlly(int a, int b) {
+    public int mult(int a, int b) {
         return a * b;
     }
 

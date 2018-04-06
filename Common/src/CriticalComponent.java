@@ -6,8 +6,10 @@ import java.rmi.RemoteException;
  */
 public interface CriticalComponent extends Remote {
     void execute(int operationID, String methodName, int first, int second) throws NoSuchMethodException, RemoteException;
-    int detectBuilding(int a, int b) throws RemoteException;
-    int detectBird(int a, int b) throws RemoteException;
-    int detectEnemy(int a, int b) throws RemoteException;
-    int detectAlly(int a, int b) throws RemoteException;
+    int add(int a, int b) throws RemoteException;
+    int sub(int a, int b) throws RemoteException;
+    int div(int a, int b) throws RemoteException;
+    int mult(int a, int b) throws RemoteException;
+
+//    int getLastOperationID() throws RemoteException;
 }
