@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/ObjectAvoidance2/ObjectAvoidance2.iml" filepath="$PROJECT_DIR$/ObjectAvoidance2/ObjectAvoidance2.iml" />
       <module fileurl="file://$PROJECT_DIR$/ObjectDetectionSystem/ObjectDetectionSystem.iml" filepath="$PROJECT_DIR$/ObjectDetectionSystem/ObjectDetectionSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/TemperatureSVM/TemperatureSVM.iml" filepath="$PROJECT_DIR$/TemperatureSVM/TemperatureSVM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThreadPool/ThreadPool.iml" filepath="$PROJECT_DIR$/ThreadPool/ThreadPool.iml" />
       <module fileurl="file://$PROJECT_DIR$/UAVS/UAVS.iml" filepath="$PROJECT_DIR$/UAVS/UAVS.iml" />
       <module fileurl="file://$PROJECT_DIR$/UnmannedAerialVehicleSystem.iml" filepath="$PROJECT_DIR$/UnmannedAerialVehicleSystem.iml" />
     </modules>
