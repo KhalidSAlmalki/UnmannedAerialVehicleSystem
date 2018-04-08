@@ -1,8 +1,6 @@
 import com.util.concurrent.PriorityExecutorService;
-import com.util.concurrent.PriorityThreadPoolExecutor;
 
 import java.util.LinkedList;
-import java.util.concurrent.*;
 
 import static com.util.concurrent.Executors.newPriorityFixedThreadPool;
 
@@ -15,20 +13,22 @@ public class main {
 
         PriorityExecutorService s =  newPriorityFixedThreadPool(10);
 
+        for(int i=0;i<10;i++)
+            s.submit(new TestThread(10), 10);
 
-
-        while (true){
-            for(int i=0;i<10;i++)
-                s.submit(new TestThread(10), 10);
-
-            for(int i=0;i<10;i++)
-                s.submit(new TestThread(5), 5);
-
-            for(int i=0;i<10;i++)
-                s.submit(new TestThread(3), 3);
-
-               Thread.sleep(10000);
-        }
+        for(int i=0;i<10;i++)
+            s.submit(new TestThread(5), 5);
+//
+//        while (true){
+//
+//
+//
+//
+//            for(int i=0;i<10;i++)
+//                s.submit(new TestThread(3), 3);
+//
+//               Thread.sleep(10000);
+//        }
 
 
 
@@ -47,12 +47,13 @@ public class main {
 
             try
             {
-                Thread.sleep(2000);
+                Thread.sleep((long)(Math.random() * 1000));
             }
             catch (InterruptedException e)
             {
                 e.printStackTrace();
             }
+
         }
     }
 
