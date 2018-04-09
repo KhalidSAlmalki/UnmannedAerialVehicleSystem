@@ -11,12 +11,13 @@ public class CalculateFibonacci {
     public static void main(String[] args) {
         PriorityExecutorService executorService =  newPriorityFixedThreadPool(10);
 
-        System.out.println(Thread.MIN_PRIORITY);
-        System.out.println(Thread.MAX_PRIORITY);
 
-        for (int i = 10; i < 25; i++) {
+        for (int i = 50; i < 80; i++) {
+
             int p = ThreadLocalRandom.current().nextInt(1, 11);
-            executorService.submit(new Fibonacci(i * 4, p), p);
+            System.out.println("scheduling  "+p+"  "+i);
+
+            executorService.submit(new Fibonacci(i, p), p);
         }
     }
 
@@ -24,13 +25,19 @@ public class CalculateFibonacci {
         int number, priority;
 
         Fibonacci(int number, int priority) {
+
             this.number = number;
             this.priority = priority;
         }
 
         @Override
         public void run() {
-            System.out.println("Started calculating Fibonacci for " + number + "!! Priority is " + priority);
+//            try {
+//                Thread.sleep(10000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+            System.out.println("Thread Id "+Thread.currentThread().getId()+" Started calculating Fibonacci for " + number + "!! Priority is " + priority);
             System.out.println("Fibonacci of " + number + " is " + fibonacci(number) + ". Calculated with priority " + priority);
         }
 
